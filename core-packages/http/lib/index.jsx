@@ -347,7 +347,7 @@ function HTTPRequest (method, url, timeout) {
 	this._build_head = function () {
 		// request line
 		var head = [];
-		var request_line = "{} {} HTTP/1.1".format(this.method(), this.url().pathname || "/");
+		var request_line = "{} {}{} HTTP/1.1".format(this.method(), this.url().pathname || "/", this.url().search);
 		head.push(request_line);
 		// headers to string (kv) form
 		var headers = this.headers().serialize('key-value', {'separator': ': ', 'eol': '\n'});
